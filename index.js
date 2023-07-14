@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 
 const cors = require("cors");
 
@@ -22,7 +22,7 @@ const run = async () => {
     const productCollection = db.collection("product");
 
     app.get("/products", async (req, res) => {
-      const cursor = productCollection.find({});
+      const cursor = productCollection.find();
       const product = await cursor.toArray();
 
       res.send({ status: true, data: product });
